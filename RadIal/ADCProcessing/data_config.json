@@ -1,0 +1,12 @@
+{
+	'Calibration': 'C:\Users\James-PC\James\RadIaI_v2\SignalProcessing\CalibrationTable.npy',
+
+	'Method': 'ADC',
+
+	'label_path': ' ',
+
+	'Data_Dir': 'C:\Users\James-PC\James\data\Test',
+
+	'Output_Folder': ' '
+
+}
