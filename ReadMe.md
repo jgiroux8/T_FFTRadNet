@@ -58,7 +58,7 @@ You can then execute the following command within the ADCProcessing folder to ge
 
 T-FFTRadNet builds off prior work from [FFTRadNet](https://github.com/valeoai/RADIal/tree/main/FFTRadNet), utilizing heirachical Swin Vision transformers as the feature extraction head on Range-Doppler inputs.
 
-![alt text](Figures/Diagram_v3.png)
+![alt text](Figures/Diagram_v3.pdf)
 
 The model is capable of utilzing raw ADC inputs via complex valued linear layers from [CubeLearn](https://github.com/zhaoymn/cubelearn) that mimic the action of a 2D Fourier Transform. These layers provide the removal of all pre-processing/normalization and provide increased mAP in LD radar settings. In HD radar, performance is approximately the same as standard Fourier Transform. Inference time is greatly reduced via the utilization of raw ADC and the complex valued layers.
 
