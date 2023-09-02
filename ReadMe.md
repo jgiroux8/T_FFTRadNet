@@ -1,9 +1,12 @@
 # T-FFTRadNet:  Object Detection with Swin Vision Transformers from Raw ADC Radar Signals
+Accepted into the Bravo Workshop at ICCV 2023.
 
 This repository contains all code needed to reproduce experiments and is based on the implementation from [ValeoAI](https://github.com/valeoai/RADIal).
 
-HD Radar (RadIal dataset) and LD Radar (RADDet dataset) models are split into seperate folders. Each folder follows a similar structure.
+HD Radar (RadIal dataset) and LD Radar (RADDet dataset) models are split into separate folders. Each folder follows a similar structure.
 
+# Abstract 
+Object detection utilizing Frequency Modulated Continuous Wave radar is becoming increasingly popular in the field of autonomous systems. Radar does not possess the same drawbacks seen by other emission-based sensors such as LiDAR, primarily the degradation or loss of return signals due to weather conditions such as rain or snow. However, radar does possess traits that make it unsuitable for standard emission-based deep learning representations such as point clouds. Radar point clouds tend to be sparse and therefore information extraction is not efficient. To overcome this, more traditional digital signal processing pipelines were adapted to form inputs residing directly in the frequency domain via Fast Fourier Transforms. Commonly, three transformations were used to form Range-Azimuth-Doppler cubes in which deep learning algorithms could perform object detection. This too has drawbacks, namely the pre-processing costs associated with performing multiple Fourier Transforms and normalization. We explore the possibility of operating on raw radar inputs from analog to digital converters via the utilization of complex transformation layers. Moreover, we introduce hierarchical Swin Vision transformers to the field of radar object detection and show their capability to operate on inputs varying in pre-processing, along with different radar configurations, i.e., relatively low and high numbers of transmitters and receivers, while obtaining on par or better results than the state-of-the-art.
 # Contents
 - [Requirements](#Section-1)
 - [Dataset Access](#Section-2)
@@ -31,7 +34,7 @@ We utilize two datasets, [RadIal](https://github.com/valeoai/RADIal) and [RADDet
 
 For RADDet, we utilize the raw ADC format and perform all pre-processing in the dataloading pipeline. The downloading of the full RAD cubes is not needed.
 
-For RadIal, we utilize both raw ADC and their pre-processed Range-Doppler matrices provided in the link above. We have provided additional code within the RadIal folder to store raw ADC matrices as numpy arrays possesing the correct numbering scheme with respect to the annotation .csv file.
+For RadIal, we utilize both raw ADC and their pre-processed Range-Doppler matrices provided in the link above. We have provided additional code within the RadIal folder to store raw ADC matrices as numpy arrays possessing the correct numbering scheme with respect to the annotation .csv file.
 
 Modify the data_config.json file with the correct paths to the CalibrationTable.npy and labels.csv files. The raw binary files should be located under the Data_dir field.
 
@@ -60,7 +63,7 @@ T-FFTRadNet builds off prior work from [FFTRadNet](https://github.com/valeoai/RA
 
 ![alt text](Figures/Diagram_v3.png)
 
-The model is capable of utilzing raw ADC inputs via complex valued linear layers from [CubeLearn](https://github.com/zhaoymn/cubelearn) that mimic the action of a 2D Fourier Transform. These layers provide the removal of all pre-processing/normalization and provide increased mAP in LD radar settings. In HD radar, performance is approximately the same as standard Fourier Transform. Inference time is greatly reduced via the utilization of raw ADC and the complex valued layers.
+The model is capable of utilizing raw ADC inputs via complex-valued linear layers from [CubeLearn](https://github.com/zhaoymn/cubelearn) that mimic the action of a 2D Fourier Transform. These layers provide the removal of all pre-processing/normalization and provide increased mAP in LD radar settings. In HD radar, performance is approximately the same as standard Fourier Transform. Inference time is greatly reduced via the utilization of raw ADC and the complex-valued layers.
 
 ![alt text](Figures/Example_FFT_Layers.png)
 
